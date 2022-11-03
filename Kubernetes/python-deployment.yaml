@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: MyApp
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+      
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: MyApp
+          image: omarmfathy219/MyApp:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: REDIS_HOST
+              value: redis-service
