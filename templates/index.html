@@ -1,27 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="{{
-      static_url("css/style.css")
-    }}">
 
-    <title>Hello, world!</title>
-  </head>
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <body>
-    <div>
-      <p>
-        👋 Hi from
-        <span class="highlight" id="{{ dict['environment'] }}">{{
-          dict["environment"]
-        }}</span>
-        environment!
-      </p>
-      <p><span class="counter">Counter:</span> {{ dict["counter"] }}</p>
-    </div>
-    <div>
-      <button type="button" onClick="window.location.reload()">Reload</button>
-    </div>
-  </body>
+    <title> TOPSHOP| Modern 3D Virtual Dressing Room</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+    <!--Core CSS -->
+    <link rel="stylesheet" href="../static/assets/css/bulma.css">
+    <link rel="stylesheet" href="../static/assets/css/demo.css">
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+
+</head>
+
+<body>
+    <section class="hero is-fullheight is-demo">
+        <div class="hero-head">
+
+            <nav id="navbar-clone" class="navbar is-fixed">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-item">
+                            <img src="../assets/img/logo/top_black.png" alt="">
+                            <span class="brand-name">TOPSHOP</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <nav class="navbar is-light">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a href="index.html" class="navbar-item">
+                            <img src="../static/assets/img/logo/top_white.png" alt="">
+                            <span class="brand-name">TOPSHOP</span>
+                        </a>
+                    </div>
+                    <div id="navbarMenu" class="navbar-menu">
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-body">
+            <canvas id="canvas"></canvas>
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <div class="column is-6">
+                    </div>
+                    <div class="column is-6">
+                        <h1 class="title is-1 is-light"><span class="typed-hero"></span></h1>
+                        <h2 class="subtitle is-5 is-light no-mb">
+                            3D Virtual Dressing Room
+                        </h2>
+                        <br>
+                        <p class="has-text-centered">
+                            <a href="home.html" class="button feather-button secondary-button is-bold raised">Get
+                                Started</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-foot">
+            <div class="container">
+                <div class="tabs is-centered">
+                    <ul>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/html5-white.svg"></a></li>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/javascript_white.svg"></a></li>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/blender_white.png"></a></li>=
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/bulma-white.svg"></a></li>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/sass-white.svg"></a></li>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/threejs_white.svg"></a></li>
+                        <li><a><img class="hero-logo" src="../static/assets/img/brands/gulp-white.svg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section is-medium is-grey">
+        <div class="container">
+
+            <div class="title-wrapper has-text-centered">
+                <div class="title is-3 is-spaced">
+                    Made With
+                </div>
+                <div class="subtitle is-5 is-muted">Bulma, Sass, Gulp and Three.js</div>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="columns has-text-centered">
+                    <div class="column is-hidden-mobile"></div>
+                    <div class="column is-2">
+                        <div class="ball levitate has-delay-2">
+                            <img src="../static/assets/img/brands/javascript.svg">
+                        </div>
+                    </div>
+
+                    <div class="column is-2">
+                        <div class="ball levitate has-version">
+                            <img src="../static/assets/img/brands/threejs_black.svg">
+                        </div>
+                    </div>
+                    <div class="column is-2">
+                        <div class="ball levitate has-version">
+                            <img src="../static/assets/img/brands/bulma.svg">
+                            <div class="v-indicator">0.8</div>
+                        </div>
+                    </div>
+                    <div class="column is-2">
+                        <div class="ball levitate has-delay-1">
+                            <img src="../static/assets/img/brands/sass.svg">
+                        </div>
+                    </div>
+                    <div class="column is-2">
+                        <div class="ball levitate has-delay-2">
+                            <img src="../static/assets/img/brands/gulp.svg">
+                        </div>
+                    </div>
+                    <div class="column is-2">
+                        <div class="ball levitate has-delay-2">
+                            <img src="../static/assets/img/brands/blender.png">
+                        </div>
+                    </div>
+                    <div class="column is-hidden-mobile"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-flex">
+                <div class="nephos">
+                    <img class="logo" src="../static/assets/img/logo/top_white.png">
+                    <span class="logo-text">TOPSHOP</span>
+                </div>
+                <div class="ninja">
+                    <div class="made-by">&copy; 2020 | Designed and coded with <i data-feather="heart" class="love"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
