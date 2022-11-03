@@ -112,7 +112,7 @@ pull jenkins with helm
 ```
    helm pull --untar jenkins/jenkins
 ```
-### 5.Edit jenkins Chart values.yaml file
+### 5. Edit jenkins Chart values.yaml file
 ```
 cd jenkins
 vim values.yaml
