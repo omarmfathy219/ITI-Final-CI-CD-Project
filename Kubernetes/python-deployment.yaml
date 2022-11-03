@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: MyApp
+  name: myapp
 
 spec:
   replicas: 2
@@ -16,8 +16,8 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: MyApp
-          image: omarmfathy219/MyApp:latest
+        - name: myapp
+          image: omarmfathy219/myapp:latest
           ports:
             - containerPort: 8080
           env:
