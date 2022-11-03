@@ -146,6 +146,31 @@ helm install jenkins ./jenkins -n jenkins
 export SERVICE_IP=$(kubectl get svc --namespace jenkins jenkins2 --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
 echo http://$SERVICE_IP:8080/login
 ```
+## 5th Part: Build CI/CD Pipeline using Jenkins
+### 1. Add Credentials in Jenkins
+- #### DockerHub Credentials
+> Add your DockerHub Credentials `(Username and Password)` and save the id with this value `DockerHub-Cred`.
+
+- #### Service Account Credentials
+> Go to GCP Console and navigate to  `Service accounts` from  `IAM & Admin` page.
+> Click on your `Service accounts` then click on `KEYS` Tab then `Add Key` then `Create new key`, for `Key type` Select `JSON`
+
+> Now go to Jenkins and Make a New credentials, select `Secret` for `credentials kind` then uplaoad the Service Account you just downloaded.
+> NOTE: for `Secret ID` eneter `Service-Account-Cred`.
+
+### 2. Create CI Pipline:
+- Pull Code from GitHub
+- Build the Application image using Docker
+- Push Image to DockerHub
+- Trigger CD Pipline to Run
+
+### 2. Create CD Pipline:
+- Deploy our Application in GKE
+
+
+
+
+
 
 
 
