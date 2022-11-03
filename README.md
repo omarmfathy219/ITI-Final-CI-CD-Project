@@ -1,1 +1,114 @@
-# ITI-Final-CI-CD-Project
+# CI-CD-Project
+## Project Overviw:
+---------------------------------------------
+Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the following steps and high-level diagram:
+1. Implement secure GKE Cliuster
+2. Deploy and configure Jenkins on GKE
+3. Deploy backend application on GKE using Jenkins pipeline
+
+## Tools:
+| Tool | Purpose |
+| ------ | ------ |
+| [ Google Kubernetes Engine (GKE) ](https://cloud.google.com/kubernetes-engine) | Google Kubernetes Engine (GKE) is a managed, production-ready environment for running containerized applications. |
+| [ Jenkins ](https://www.jenkins.io) | Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software. |
+| [ Helm ](https://helm.sh) | Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application. |
+| [ Docker ](https://www.docker.com) | Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in containers|
+| [ Terraform ](https://www.terraform.io) | Terraform is an open-source infrastructure as code software tool that enables you to safely and predictably create, change, and improve infrastructure. |
+
+## Project Architecture:
+---------------------------------------------
+
+## Jenkins Part
+#### Once a commit is made Jenkins will:
+- Build image from Dockerfile
+- Push image to DockerHub
+- Apply deployment for the app based on the image
+- Apply LoadBalancer service for the app
+
+## First Part: Infrastructure Overview
+![1_-yXfoGjebJS0RIwUNzJ6Ig](https://user-images.githubusercontent.com/52250018/199336829-1d104ab7-aa80-4809-9775-b4b3cf8dfea9.png)
+
+- ###  Network Files Consist of :
+  - Two subnets one for GKE and another for Bastion Host
+  - NAT Gateway 
+  - Firewall to allow SSH Connection
+
+- ### GKE Files Consist of:
+  - private container cluster resource with authorize networks configuration
+  - node pool with count 3 
+- ### Bastion File: 
+    - for Creating a Private VM to Connect with GKE Cluster
+
+## Secound Part: Build the Infrastructure
+### 1. Clone The Repo:
+```
+git clone hhttps://github.com/OmarMFathy219/ITI-Final-CI-CD-Project.git
+```
+### 2. Navigate to the Terrafrom Code
+> After you clone the code you need to navigate to `terraform` folder to build the infrastructure:
+```
+cd terraform/
+```
+#### 3. Initialize Terraform
+```
+terraform init
+```
+
+#### 4. Check Plan
+```
+terraform plan
+```
+
+#### 5. Apply the plan *it will take some time to complete*
+```
+terraform apply
+```
+## Third Part: Connect to Private GKE Cluster through Bastion VM
+> Now after the Infrastructure built navigate to `Compute Engine` from GCP console then `VM instances` and click the SSH to `private-vm2` to run this commands:
+
+### 1. Install Kubectl
+```
+sudo apt-get install kubectl
+```
+### 2. Install GKE gcloud auth Plugin
+```
+sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
+```
+### 3. Login with your Credintial
+```
+gcloud auth login
+```
+### 4. Set your active Application Default Credentials
+> to set your active Application Default Credentials to your account run this commands:
+```
+gcloud auth application-default login
+```
+### 5. Connect to GKE Cluster
+> Go to `Kubernetes Engine` Page in your `Clusters` tab you will find the `private-cluster` like image
+
+> Click on the `Action button` "Three dots" then `Connect`, Copy the command and paste it in the `VM SSH window`
+```
+gcloud container clusters get-credentials private-cluster --zone us-central1-a --project <Your-Project-ID>
+```
+## 4th Part: Install Jenkins using Helm on GKE Cluster
+### 1. Install Helm
+```
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
+### 2. Create Namespace to install Jenkins in it
+```
+pull jenkins with helm
+```
+### 3. Add Jenkins Repo
+```
+   helm repo add jenkins https://charts.jenkins.io
+   helm repo update
+```
+### 4. Pull Jenkins with Helm
+```
+   helm pull --untar jenkins/jenkins
+```
