@@ -1,6 +1,6 @@
 # CI-CD-Project
 ## Project Overviw:
----------------------------------------------
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Jenkins%20digram.drawio.png)
 Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the following steps and high-level diagram:
 1. Implement secure GKE Cliuster
 2. Deploy and configure Jenkins on GKE
