@@ -5,10 +5,10 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
-  name: Cloud-SDK
+  name: cloud-sdk
 spec:
   containers:
-  - name: Cloud-SDK
+  - name: cloud-sdk
     image:  google/cloud-sdk
     command:
     - cat
@@ -30,7 +30,7 @@ spec:
   stages {
     stage('Deployment') {
       steps {
-        container('Cloud-SDK') {
+        container('cloud-sdk') {
         withCredentials([file(credentialsId: 'service-account-final', variable: 'GCLOUD_CREDS')]) {
           sh '''
             gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
