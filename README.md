@@ -16,7 +16,6 @@ Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the fo
 | [ Terraform ](https://www.terraform.io) | Terraform is an open-source infrastructure as code software tool that enables you to safely and predictably create, change, and improve infrastructure. |
 
 ## Project Architecture:
----------------------------------------------
 ![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/GCP-Diagram.png)
 
 ## Jenkins Part
@@ -66,6 +65,7 @@ terraform apply
 ```
 ## Third Part: Connect to Private GKE Cluster through Bastion VM
 > Now after the Infrastructure built navigate to `Compute Engine` from GCP console then `VM instances` and click the SSH to `private-vm2` to run this commands:
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/VM.png)
 
 ### 1. Install Kubectl
 ```
@@ -85,7 +85,8 @@ gcloud auth login
 gcloud auth application-default login
 ```
 ### 5. Connect to GKE Cluster
-> Go to `Kubernetes Engine` Page in your `Clusters` tab you will find the `private-cluster` like image
+> Go to `Kubernetes Engine` Page in your `Clusters` tab you will find the `private-cluster`
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/GKE.png)
 
 > Click on the `Action button` "Three dots" then `Connect`, Copy the command and paste it in the `VM SSH window`
 ```
@@ -147,6 +148,8 @@ helm install jenkins ./jenkins -n jenkins
 export SERVICE_IP=$(kubectl get svc --namespace jenkins jenkins2 --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
 echo http://$SERVICE_IP:8080/login
 ```
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/jenkins.png)
+
 ## 5th Part: Build CI/CD Pipeline using Jenkins
 ### 1. Add Credentials in Jenkins
 - #### DockerHub Credentials
@@ -154,10 +157,18 @@ echo http://$SERVICE_IP:8080/login
 
 - #### Service Account Credentials
 > Go to GCP Console and navigate to  `Service accounts` from  `IAM & Admin` page.
+
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Service-Account.png)
+
 > Click on your `Service accounts` then click on `KEYS` Tab then `Add Key` then `Create new key`, for `Key type` Select `JSON`
+
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Add-New-Key.png)
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Key-Type.png)
 
 > Now go to Jenkins and Make a New credentials, select `Secret` for `credentials kind` then uplaoad the Service Account you just downloaded.
 > NOTE: for `Secret ID` eneter `Service-Account-Cred`.
+
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Jenkins-Cred.png)
 
 ### 2. Create CI Pipline:
 - Pull Code from GitHub
