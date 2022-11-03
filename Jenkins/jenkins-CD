@@ -35,7 +35,7 @@ spec:
           sh '''
             gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
             apt-get install google-cloud-sdk-app-engine-java kubectl -y
-            gcloud container clusters get-credentials private-cluster --zone us-central1-a --project iti-devops-366712
+            # gcloud container clusters get-credentials private-cluster --zone us-central1-a --project iti-devops-366712
             kubectl apply -f ./Kubernetes/python-deployment.yaml -n production
             kubectl apply -f ./Kubernetes/redis-deployment.yaml -n production
             kubectl apply -f ./Kubernetes/redis-service.yaml -n production
