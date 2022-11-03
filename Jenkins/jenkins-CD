@@ -25,7 +25,7 @@ spec:
   }
   environment {
     CLOUDSDK_CORE_PROJECT='iti-devops-366712'
-    CLIENT_EMAIL='my-first-serviceaccount@iti-devops-366712.iam.gserviceaccount.com'
+    CLIENT_EMAIL='project-service-account@iti-devops-366712.iam.gserviceaccount.com'
   }
   stages {
     stage('Deployment') {
