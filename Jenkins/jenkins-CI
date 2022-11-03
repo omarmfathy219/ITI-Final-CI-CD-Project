@@ -35,7 +35,7 @@ spec:
     stage('Build with Buildah') {
       steps {
         container('buildah') {
-          sh 'buildah build -t omarmfathy219/MyApp:latest .'
+          sh 'buildah build -t omarmfathy219/myapp:latest .'
         }
       }
     }
@@ -49,7 +49,7 @@ spec:
     stage('push image') {
       steps {
         container('buildah') {
-          sh 'buildah push omarmfathy219/MyApp:latest'
+          sh 'buildah push omarmfathy219/myapp:latest'
          
         }
       }
