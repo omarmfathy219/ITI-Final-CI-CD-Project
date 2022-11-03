@@ -112,3 +112,40 @@ pull jenkins with helm
 ```
    helm pull --untar jenkins/jenkins
 ```
+### 5.Edit jenkins Chart values.yaml file
+```
+cd jenkins
+vim values.yaml
+```
+> Replace `ServiceType` value from `ClusterIP` to `LoadBlancer` in Line 129:
+```
+serviceType: LoadBalancer
+```
+> Replace `All InstallPlugins` version to latest in line 241
+```
+installPlugins:
+    - kubernetes:latest
+    - workflow-aggregator:latest
+    - git:latest
+    - configuration-as-code:latest
+```
+> Save the file and go back to the home Driectory
+```
+cd ..
+```
+### 6.Now Install Jenkins Chart
+```
+helm install jenkins ./jenkins -n jenkins
+```
+### 7. Get `admin` user Password
+```
+  kubectl exec --namespace jenkins -it svc/jenkins2 -c jenkins -- /bin/cat /run/secrets/additional/chart-admin-password && echo
+```
+### 8. Get the `Jenkins URL`
+```
+export SERVICE_IP=$(kubectl get svc --namespace jenkins jenkins2 --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+echo http://$SERVICE_IP:8080/login
+```
+
+
+
