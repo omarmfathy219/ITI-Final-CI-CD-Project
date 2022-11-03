@@ -18,13 +18,6 @@ Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the fo
 ## Project Architecture:
 ![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/GCP-Diagram.png)
 
-## Jenkins Part
-#### Once a commit is made Jenkins will:
-- Build image from Dockerfile
-- Push image to DockerHub
-- Apply deployment for the app based on the image
-- Apply LoadBalancer service for the app
-
 ## First Part: Infrastructure Overview
 ![1_-yXfoGjebJS0RIwUNzJ6Ig](https://user-images.githubusercontent.com/52250018/199336829-1d104ab7-aa80-4809-9775-b4b3cf8dfea9.png)
 
@@ -151,6 +144,14 @@ echo http://$SERVICE_IP:8080/login
 ![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/jenkins.png)
 
 ## 5th Part: Build CI/CD Pipeline using Jenkins
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Pipeline-Stages.png)
+
+#### Once a commit is made Jenkins will:
+- Build image from Dockerfile
+- Push image to DockerHub
+- Apply deployment for the app based on the image
+- Apply LoadBalancer service for the app
+
 ### 1. Add Credentials in Jenkins
 - #### DockerHub Credentials
 > Add your DockerHub Credentials `(Username and Password)` and save the id with this value `DockerHub-Cred`.
