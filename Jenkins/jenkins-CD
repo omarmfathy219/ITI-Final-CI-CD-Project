@@ -31,7 +31,7 @@ spec:
     stage('Deployment') {
       steps {
         container('cloud-sdk') {
-        withCredentials([file(credentialsId: 'service-account-final', variable: 'GCLOUD_CREDS')]) {
+        withCredentials([file(credentialsId: 'Service-Account-Cred', variable: 'GCLOUD_CREDS')]) {
           sh '''
             gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
             apt-get install google-cloud-sdk-app-engine-java kubectl -y
