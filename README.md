@@ -17,6 +17,7 @@ Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the fo
 
 ## Project Architecture:
 ---------------------------------------------
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/GCP-Diagram.png)
 
 ## Jenkins Part
 #### Once a commit is made Jenkins will:
