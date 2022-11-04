@@ -180,7 +180,7 @@ echo http://$SERVICE_IP:8080/login
 ### 2. Create CD Pipline:
 - Deploy our Application in GKE
 
-
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Pipeline-Finished.png)
 
 
 
