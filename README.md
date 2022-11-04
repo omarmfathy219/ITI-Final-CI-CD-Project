@@ -193,6 +193,9 @@ echo http://$SERVICE_IP:8080/login
 
 ![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/Pipeline-Finished.png)
 
+## 6th Part: Check our Application
+![](https://github.com/OmarMFathy219/ITI-Final-CI-CD-Project/blob/main/Screenshot/App.png)
+
 ## Final Part: Clean up 💣
 ```
 terraform destroy 
