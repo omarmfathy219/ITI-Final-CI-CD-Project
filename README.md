@@ -6,6 +6,10 @@ Deploy a Python web application on GKE using CI/CD jenkins Pipeline using the fo
 2. Deploy and configure Jenkins on GKE
 3. Deploy backend application on GKE using Jenkins pipeline
 
+
+https://user-images.githubusercontent.com/29423900/199859404-2a5cebcf-1865-4ca8-b6b4-21777d144288.mp4
+
+
 ## Tools:
 | Tool | Purpose |
 | ------ | ------ |
